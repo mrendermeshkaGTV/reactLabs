@@ -11,9 +11,9 @@ export default function Header() {
       float: left;
       color: #00dcf8;
       text-align: center;
-      padding: 14px 16px;
+      padding: 5vw 5vw;
       text-decoration: none;
-      font-size: 17px;
+      font-size: 20px;
 
       &:hover {
         background-color: #202020;
@@ -25,11 +25,12 @@ export default function Header() {
     `
 
     return (
-        <Container maxW='1200px'>
+        <Container maxW='1000x'>
             <Navbar>
                 <Button href="/">Home</Button>
                 <Button href='/categories'>Catagories</Button>
             </Navbar>
+
             <Outlet />
         </Container>
     );

@@ -8,7 +8,6 @@ import Header from './routes/Header';
 import Categories from './routes/Catagories';
 import Products from './routes/Products';
 import Product from './routes/Product';
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,16 +37,8 @@ const router = createBrowserRouter([
     ]
   }
 ])
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <ChakraProvider>
-      <RouterProvider router={router} />
-    </ChakraProvider>
-  </React.StrictMode>
-);
-
+root.render(<React.StrictMode><ChakraProvider><RouterProvider router={router} /></ChakraProvider></React.StrictMode>);
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

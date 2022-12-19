@@ -5,31 +5,22 @@ import Product from '../components/Product'
 
 export default function () {
     const products = useLoaderData().products;
-
     let [searchParams, setSearchParams] = useSearchParams();
-
     let q = searchParams.get("q");
-
     let [productData, setProductData] = React.useState(null);
-
     React.useEffect(() => {
         let abortController = new AbortController();
-
         async function getProduct() {
-            let response = await fetch(`https://dummyjson.com/products/search?q=${q}`, {
-                signal: abortController.signal,
-            });
+            let response = await fetch(`https://dummyjson.com/products/search?q=${q}`, {signal: abortController.signal});
             if (!abortController.signal.aborted) {
                 let data = await response.json();
                 setProductData(data.products);
                 console.log(productData)
             }
         }
-
         if (q) {
             getProduct();
         }
-
         return () => {
             abortController.abort();
         };
@@ -41,7 +32,7 @@ export default function () {
         let newProduct = formData.get("q");
         if (!newProduct) {
             setProductData(null)
-            return;
+            return
         }
         setSearchParams({ q: newProduct });
     }
@@ -54,15 +45,8 @@ export default function () {
                 </label>
                 <Button type="submit">Search</Button>
             </form>
-            <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(200px, 1fr))'>{
-                productData ?
-                    productData.map((product) => (
-                        <Product product={product} />
-                    )) :
-                    products.map((product) => (
-                        <Product product={product} />
-                    ))
-            }</SimpleGrid>
+            <SimpleGrid spacing={4} templateColumns='repeat(auto-fill, minmax(100px, 1fr))'>{
+                productData ? productData.map((product) => (<Product product={product} /> )) :products.map((product) => (<Product product={product} />))}</SimpleGrid>
         </>
     )
 }

@@ -6,13 +6,10 @@ export default function () {
     const product = useLoaderData();
     const Container = styled.div`
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       background-color: #282c34;
-      color: white;
+      color: #ffffff;
       font-family: Consolas, sans-serif!important;
     `
-    return (<Container>{
-            <ProductItem product={product}/>
-        }</Container>
-    )
+    return (<Container>{<ProductItem product={product}/>}</Container>)
 }
